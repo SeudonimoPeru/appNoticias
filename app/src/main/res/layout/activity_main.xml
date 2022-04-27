@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:clickable="true"
+	android:focusable="true"
+	android:keepScreenOn="true"
+	android:orientation="vertical">
+
+	<com.google.android.material.appbar.AppBarLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:liftOnScroll="true">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:animateLayoutChanges="true"
+			android:gravity="center_horizontal|center_vertical"
+			android:orientation="vertical">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="@dimen/heigh_toolbar"
+				android:gravity="center_horizontal|center_vertical">
+
+				<androidx.appcompat.widget.AppCompatImageView
+					android:layout_width="50dp"
+					android:layout_height="50dp"
+					android:src="@drawable/logo_icon" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/ap_viewOffline"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@color/red"
+				android:gravity="center"
+				android:visibility="gone"
+				tools:visibility="visible">
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="8dp"
+					android:text="You are offline"
+					android:textColor="@color/white" />
+
+			</LinearLayout>
+		</LinearLayout>
+
+
+	</com.google.android.material.appbar.AppBarLayout>
+
+	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+		android:id="@+id/ap_swpRefresh"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:animateLayoutChanges="true">
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/ap_rcvNews"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				tools:listitem="@layout/item_noticia" />
+
+			<androidx.appcompat.widget.LinearLayoutCompat
+				android:id="@+id/ap_viewEmpty"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerInParent="true"
+				android:gravity="center"
+				android:orientation="vertical"
+				android:visibility="gone"
+				tools:visibility="visible">
+
+				<androidx.appcompat.widget.AppCompatImageView
+					android:layout_width="150dp"
+					android:layout_height="150dp"
+					android:scaleType="fitXY"
+					app:srcCompat="@drawable/ic_dashboard" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/title"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:ellipsize="end"
+					android:maxLines="2"
+					android:text="No hay nuevas noticias..."
+					android:textSize="16dp"
+					android:textStyle="bold" />
+			</androidx.appcompat.widget.LinearLayoutCompat>
+		</RelativeLayout>
+
+	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
